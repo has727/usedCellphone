@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %} Used phone for sell {% endblock %}
+{% block content %}
+    <div class="container" align="center">
+    {% for p in products %}
+        {% if forloop.first %}
+        <table>
+            <tr>
+                <td> Cellphone in stock </td>
+                <td> &nbsp;&nbsp;&nbsp; </td>
+                <td> &nbsp;&nbsp;&nbsp; </td>
+                <td align="center"> Maker </td>
+                <td> &nbsp;&nbsp;&nbsp; </td>
+                <td> &nbsp;&nbsp;&nbsp; </td>
+                <td align="center"> Model </td>
+                <td> &nbsp;&nbsp;&nbsp; </td>
+                <td> &nbsp;&nbsp;&nbsp; </td>
+                <td> Year </td>
+                <td> &nbsp;&nbsp;&nbsp; </td>
+                <td> &nbsp;&nbsp;&nbsp; </td>
+                <td align="center"> Price </td>
+            </tr>
+        {% endif %}
+        <tr>
+            <td align="center"> {{ p.nickname }}</td>
+            <td> &nbsp;&nbsp;&nbsp; </td>
+            <td> &nbsp;&nbsp;&nbsp; </td>
+            <td> {{ p.pmodel.maker.name }}</td>
+            <td> &nbsp;&nbsp;&nbsp; </td>
+            <td> &nbsp;&nbsp;&nbsp; </td>
+            <td align="center"> {{ p.pmodel }} </td>
+            <td> &nbsp;&nbsp;&nbsp; </td>
+            <td> &nbsp;&nbsp;&nbsp; </td>
+            <td> {{ p.year }}</td>
+            <td> &nbsp;&nbsp;&nbsp; </td>
+            <td> &nbsp;&nbsp;&nbsp; </td>
+            <td align="right"> {{ p.price }}</td>
+        </tr>
+        {% if forloop.last %}
+        </table>
+        {% endif %}
+        {% empty %}
+        <h3> Sorry, out of stock </h3>
+    {% endfor %}
+    </div>
+{% endblock %}
